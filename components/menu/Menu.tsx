@@ -1,6 +1,6 @@
 'use client';
 import {useState, useRef, useEffect} from 'react';
-import logo from "../../public/logo.jpeg";
+import Image from "next/image";
 import Link from "next/link";
 export default function Menu(){
     const menuLinks = [
@@ -19,6 +19,7 @@ export default function Menu(){
     }
     return (
         <div ref={container}>
+            <Image width={500} height={500} alt="Logo" src="../../public/logo.jpeg"></Image>
             <ul>
                 {menuLinks.map((link, index) => (
                     <li key={index}>

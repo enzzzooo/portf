@@ -7,17 +7,17 @@ export default function Menu(){
     const menuLinks = [
         {path: "/", label: "Home"},
         {path: "/about", label: "About"},
-        {path: "/services", label: "Services"},
         {path: "/contact", label: "Contact"},
+        {path: "/designs", label: "Designs"},
         {path: "/lab", label: "Lab"},
     ]
 // by default false
     const [menu, setMenu] = useState(false);
 
     return (
-        <div className={`flex justify-between mx-5 bg-grn ${menu && "absolute w-screen h-screen"}`}>
+        <div className={`flex justify-between mx-5 bg-green ${menu && "absolute w-screen h-screen"}`}>
             {/* logo */}
-            <Image alt="Logo" src={logo} onClick={() => {if (!menu) {setMenu(false)}}} className='size-20'></Image>
+            <Link href="/"><Image alt="Logo" src={logo} onClick={() => {if (!menu) {setMenu(false)}}} className='size-20'></Image></Link>
             {/* links */}
             <ul className={menu == true ? "block" : "hidden"}>
                 {menuLinks.map((link, index) => (

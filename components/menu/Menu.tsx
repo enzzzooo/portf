@@ -1,8 +1,10 @@
 'use client';
-import {useState, useRef, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import Image from "next/image";
 import logo from "../../public/logo.jpeg";
 import Link from "next/link";
+import ScrollLock from "./ScrollLock";
+
 export default function Menu(){
     const menuLinks = [
         {path: "/", label: "Home"},
@@ -13,9 +15,15 @@ export default function Menu(){
     ]
 // by default false
     const [menu, setMenu] = useState(false);
-
+    const [blockScroll, allowScroll] = ScrollLock();
+    if (menu) {
+        blockScroll();
+    }
+    if (!menu) {
+        allowScroll();
+    }
     return (
-        <div className={`flex justify-between mx-5 bg-green ${menu && "absolute w-screen h-screen"}`}>
+        <div className={`flex justify-between px-5 bg-green ${menu && "fixed w-screen h-screen"}`}>
             {/* logo */}
             <Link href="/"><Image alt="Logo" src={logo} onClick={() => {if (!menu) {setMenu(false)}}} className='size-20'></Image></Link>
             {/* links */}
@@ -31,8 +39,7 @@ export default function Menu(){
             {/* menu open/close */}
             <button onClick={() => setMenu(!menu)}>
                 {/* if menu == true (open) then X, else Menu */}
-                {menu ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12`" /></svg> : "Menu"}
+                {menu ? <span className='bg-blue-600 z-10'>&#10005;</span> : "Menu"}
             </button>
         </div>
     )

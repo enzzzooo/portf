@@ -14,9 +14,9 @@ export default async function page() {
         <p>projects</p>
         <p>and</p>
         <p>website</p>
-        <p>designs</p>
+        <p className="inline">designs</p>
       </div>
-      <Link href="/designs" className="absolute right-10 text-2xl text-green">View designs</Link>
+      <Link href="/designs" className="inline right-10 text-2xl text-green">View designs</Link>
       <div className="h-screen">View projects</div>
     </>
   )

@@ -15,22 +15,23 @@ export default function Menu(){
     ]
 // by default false
     const [menu, setMenu] = useState(false);
-    // const [blockScroll, allowScroll] = ScrollLock();
-    // if (menu) {
-    //     blockScroll();
-    // }
-    // if (!menu) {
-    //     allowScroll();
-    // }
+    const [blockScroll, allowScroll] = ScrollLock();
+    // if value of menu changes then the if statement is asked again
+    if (menu) {
+        blockScroll();
+    }
+    if (!menu) {
+         allowScroll();
+    }
     return (
-        <div className={`flex justify-between px-5 bg-green ${menu && "relative w-screen h-screen overflow-hidden"}`}>
+        <div className={`flex justify-between px-5 bg-green ${menu && "relative w-screen h-screen overflow-hidden "}`}>
             {/* logo */}
             <Link href="/"><Image alt="Logo" src={logo} onClick={() => {if (!menu) {setMenu(false)}}} className='size-20'></Image></Link>
             {/* links */}
             {/* if there is no menu open then display hidden */}
-            <ul className={`flex flex-col gap-5 ${!menu && "hidden"}`}>
+            <ul className={`flex flex-col gap-5 text-left ${!menu && "hidden"}`}>
                 {menuLinks.map((link, index) => (
-                    <li key={index} className=''>
+                    <li key={index} className='text-5xl'>
                         <Link href={link.path} onClick={() => setMenu(!menu)}>
                             {link.label}
                         </Link>

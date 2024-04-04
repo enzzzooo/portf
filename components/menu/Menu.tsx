@@ -31,9 +31,10 @@ export default function Menu(){
             {/* if there is no menu open then display hidden */}
             <ul className={`flex flex-col gap-5 text-left ${!menu && "hidden"}`}>
                 {menuLinks.map((link, index) => (
-                    <li key={index} className='text-5xl'>
-                        <Link href={link.path} onClick={() => setMenu(!menu)}>
+                    <li key={index}>
+                        <Link href={link.path} key={index} className='text-5xl inline-block group transition duration-300'onClick={() => setMenu(!menu)}>
                             {link.label}
+                            <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black"></span>
                         </Link>
                     </li>
                 ))}

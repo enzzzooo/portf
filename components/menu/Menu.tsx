@@ -27,7 +27,8 @@ export default function Menu(){
             {/* logo */}
             <Link href="/"><Image alt="Logo" src={logo} onClick={() => {if (!menu) {setMenu(false)}}} className='size-20'></Image></Link>
             {/* links */}
-            <ul className={menu == true ? "block" : "hidden"}>
+            {/* if there is no menu open then display hidden */}
+            <ul className={`!menu && "hidden"`}>
                 {menuLinks.map((link, index) => (
                     <li key={index}>
                         <Link href={link.path} onClick={() => setMenu(!menu)}>
@@ -39,7 +40,8 @@ export default function Menu(){
             {/* menu open/close */}
             <button onClick={() => setMenu(!menu)}>
                 {/* if menu == true (open) then X, else Menu */}
-                {menu ? <span className='bg-blue-600 z-10'>&#10005;</span> : "Menu"}
+                {/* the X is unicode number 10,005 https://www.fileformat.info/info/unicode/char/2715/index.htm by react https://shripadk.github.io/react/docs/jsx-gotchas.html */}
+                {menu ? String.fromCharCode(10005) : "Menu"}
             </button>
         </div>
     )

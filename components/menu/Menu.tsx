@@ -29,7 +29,7 @@ export default function Menu(){
             <Link href="/"><Image alt="Logo" src={logo} onClick={() => {if (!menu) {setMenu(false)}}} className='size-20'></Image></Link>
             {/* links */}
             {/* if there is no menu open then display hidden */}
-            <ul className={`flex flex-col gap-5 text-left ${!menu && "hidden"}`}>
+            <ul className={`flex flex-col gap-5 text-left pt-10 ${!menu && "hidden"}`}>
                 {menuLinks.map((link, index) => (
                     <li key={index}>
                         <Link href={link.path} key={index} className='text-5xl inline-block group transition duration-300'onClick={() => setMenu(!menu)}>
